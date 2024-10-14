@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy import Column, Integer, String
+from flask_migrate import Migrate
+
 
 # Inicializa a aplicação Flask
 app = Flask(__name__)
@@ -15,13 +17,16 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Inicializa o banco de dados
 db = SQLAlchemy(app)
 
+# Inicializa o Migrate
+migrate = Migrate(app, db)
+
 # Modelos
 class User(db.Model):
     __tablename__ = 'user'
 
     id = Column(Integer, primary_key=True)
     username = Column(String(128), nullable=False, unique=True)
-    password = Column(String(256), nullable=False)
+    password = Column(String(512), nullable=False)
 
 class Task(db.Model):
     __tablename__ = 'task'
