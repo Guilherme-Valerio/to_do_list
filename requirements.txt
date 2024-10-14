@@ -1,2 +1,6 @@
 Flask
 redis
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-JWT-Extended
+psycopg2-binary
