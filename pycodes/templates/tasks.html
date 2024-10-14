@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Tarefas</h1>
+        <form id="addTaskForm">
+            <input type="text" id="taskTitle" placeholder="Título da Tarefa" required>
+            <button type="submit">Adicionar Tarefa</button>
+        </form>
+        <ul id="taskList">
+            {% for task in tasks %}
+                <li>
+                    {{ task.title }}
+                    <button class="update-task" data-id="{{ task.id }}">Atualizar</button>
+                    <button class="delete-task" data-id="{{ task.id }}">Deletar</button>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <script src="{{ url_for('static', filename='tasks.js') }}"></script>
+</body>
+</html>
+
