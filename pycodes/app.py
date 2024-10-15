@@ -83,6 +83,12 @@ def add_task():
     if 'user_id' not in session:
         return redirect(url_for('login'))
     title = request.form['title']
+    
+    existing_task = Task.query.filter_by(title=title, user_id=session['user_id']).first()
+    
+    if existing_task:
+        return jsonify({'error': 'Uma tarefa com esse título já existe.'}), 400
+    
     new_task = Task(title=title, user_id=session['user_id'])
     db.session.add(new_task)
     db.session.commit()
