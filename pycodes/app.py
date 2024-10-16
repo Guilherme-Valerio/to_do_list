@@ -8,7 +8,7 @@ from flask_migrate import Migrate
 
 # Inicializa a aplicação Flask
 app = Flask(__name__)
-app.secret_key = 'sua_chave_secreta_aqui'
+app.secret_key = 'chavemuitosecreta'
 
 # Configurações do banco de dados
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://list_db_owner:ozwquikc1pr6@ep-plain-block-a5flllmm.us-east-2.aws.neon.tech:5432/list_db?sslmode=require'
